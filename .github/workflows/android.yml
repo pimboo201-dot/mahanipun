@@ -1,0 +1,46 @@
+name: Android Build
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      KS: ${{ secrets.KEYSTORE_BASE64 }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: 21 }
+      - run: npm install --legacy-peer-deps
+      - run: npm run prepare:android
+      - name: Debug APK (टेस्टिंगसाठी)
+        working-directory: android
+        run: ./gradlew assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+      - name: Release APK + AAB बनवा
+        if: env.KS != ''
+        working-directory: android
+        run: ./gradlew assembleRelease bundleRelease
+      - name: Sign
+        if: env.KS != ''
+        run: |
+          echo "$KS" | base64 -d > release.keystore
+          BT=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -1)
+          A=android/app/build/outputs
+          $BT/zipalign -p 4 $A/apk/release/app-release-unsigned.apk aligned.apk
+          $BT/apksigner sign --ks release.keystore --ks-key-alias "${{ secrets.KEY_ALIAS }}" --ks-pass pass:"${{ secrets.KEYSTORE_PASSWORD }}" --key-pass pass:"${{ secrets.KEY_PASSWORD }}" --out app-release.apk aligned.apk
+          jarsigner -keystore release.keystore -storepass "${{ secrets.KEYSTORE_PASSWORD }}" -keypass "${{ secrets.KEY_PASSWORD }}" $A/bundle/release/app-release.aab "${{ secrets.KEY_ALIAS }}"
+          cp $A/bundle/release/app-release.aab app-release.aab
+      - uses: actions/upload-artifact@v4
+        if: env.KS != ''
+        with:
+          name: release-signed
+          path: |
+            app-release.apk
+            app-release.aab
