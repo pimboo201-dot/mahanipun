@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="mr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>महानिपुण विद्यार्थी स्तर पडताळणी</title><meta name="theme-color" content="#4f46e5"><meta name="description" content="शिक्षकांसाठी विद्यार्थी अध्ययन स्तर पडताळणी साधन">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6fb;--c:#fff;--t:#1d2433;--m:#6b7489;--p:#4f46e5;--ok:#16a34a;--no:#dc2626;--b:#e3e7f0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1320;--c:#1a2033;--t:#eef1f8;--m:#98a2b8;--p:#818cf8;--b:#2b3350}}
+:root[data-theme="dark"]{--bg:#0f1320;--c:#1a2033;--t:#eef1f8;--m:#98a2b8;--p:#818cf8;--b:#2b3350}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font-family:"Noto Sans Devanagari","Mukta",system-ui,sans-serif;line-height:1.5}
+header{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;padding:18px 16px;text-align:center}
+header h1{margin:0;font-size:19px}header p{margin:2px 0 0;font-size:12px;opacity:.85}
+main{max-width:640px;margin:0 auto;padding:14px}
+.card{background:var(--c);border:1px solid var(--b);border-radius:14px;padding:14px;margin-bottom:12px}
+h2{font-size:16px;margin:0 0 10px}
+button,input,select{font:inherit}
+.btn{background:var(--p);color:#fff;border:0;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer}
+.btn.g{background:transparent;color:var(--p);border:1px solid var(--p)}.btn.ok{background:var(--ok)}.btn.no{background:var(--no)}.btn:disabled{opacity:.4}
+input,select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--b);background:var(--c);color:var(--t)}
+.row{display:flex;gap:8px;align-items:center}.sp{justify-content:space-between}
+.badge{background:var(--p);color:#fff;border-radius:20px;padding:2px 10px;font-size:12px;white-space:nowrap}
+.m{color:var(--m);font-size:13px}
+.q{display:flex;gap:10px;align-items:center;padding:12px;border:1px solid var(--b);border-radius:12px;margin-bottom:8px;cursor:pointer;font-size:16px}
+.q.on{border-color:var(--ok);background:rgba(22,163,74,.12)}
+.q i{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--m);display:grid;place-items:center;font-style:normal;color:#fff}
+.q.on i{background:var(--ok);border-color:var(--ok)}
+.bar{height:8px;background:var(--b);border-radius:8px;overflow:hidden;margin:8px 0}.bar b{display:block;height:100%;background:var(--p)}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:8px;border-bottom:1px solid var(--b);text-align:left}
+.big{font-size:44px;font-weight:800;color:var(--p);text-align:center}
+
+input,select,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid var(--b);background:var(--c);color:var(--t)}
+textarea{margin-bottom:8px;font-size:13px}
+.st{padding:8px 0;border-bottom:1px solid var(--b)}.st select{width:100px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--c);border-bottom:1px solid var(--b)}
+nav .row{gap:0}nav>.row:first-child{overflow-x:auto}.pv h3{font-size:14px;margin:12px 0 4px}.pv p,.pv li{font-size:14px;margin:4px 0}.stars button{background:none;border:0;font-size:36px;cursor:pointer;padding:0 4px;color:#f59e0b}nav button{flex:1 0 auto;border:0;background:transparent;color:var(--m);padding:11px 8px;font-weight:600;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+nav button.on{color:var(--p);border-bottom-color:var(--p)}.tabs{overflow-x:auto;border-top:1px solid var(--b)}
+.q.bg{font-size:28px}
+.sets{display:flex;gap:6px;overflow-x:auto;margin:6px 0 10px}.sets button{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--b);background:var(--c);color:var(--t);font-weight:700}
+.sets .on{background:var(--p);color:#fff}.sets .dn{box-shadow:inset 0 0 0 3px var(--ok)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.88);color:#fff;display:grid;place-items:center;text-align:center;font-size:22px;z-index:20}
+@media print{header,.np{display:none!important}:root{--bg:#fff!important;--c:#fff!important;--t:#000!important;--m:#444!important;--b:#999!important}}
+</style></head><body>
+<header><h1>📘 महानिपुण विद्यार्थी स्तर पडताळणी</h1><p>विद्यार्थ्यांचा अध्ययन स्तर सोप्या पद्धतीने तपासा</p></header>
+<div id="nv"></div><main id="app"></main>
+<script src="ads-config.js"></script>
+<script>
+const T=["काही अक्षरे व ध्वनी ओळखत नाही","सर्व अक्षरे व ध्वनी ओळखतो","स्वरचिन्हांसह दोन अक्षरी शब्द वाचतो","३–४ अक्षरी शब्द वाचतो","साध्या विरामचिन्हांची दखल घेतो","परिचित २–३ शब्दांची वाक्ये वाचतो","२–३ शब्दांची जोडाक्षरयुक्त वाक्ये वाचतो","२–३ शब्दांची वाक्ये अचूक, विरामचिन्हांसह, आकलनासह","३–५ शब्दांची वाक्ये वाचतो","३–५ शब्दांची जोडाक्षरयुक्त वाक्ये वाचतो","३–५ शब्द: अचूक, विरामचिन्हांसह, आकलनासह","४–५ शब्दांची जोडाक्षरयुक्त वाक्ये वाचतो","४–५ शब्द: अचूक, विरामचिन्हांसह, आकलनासह","६–८ शब्दांची जोडाक्षरयुक्त वाक्ये वाचतो","६–८ शब्द: अचूक, विरामचिन्हांसह, आकलनासह"];
+const cr=s=>["वाचा: "+s+" — शब्द न चुकता वाचतो","विरामचिन्हावर योग्य थांबतो","योग्य गतीने (अडखळत नाही) वाचतो","वाक्यावर 'कोण/काय?' प्रश्न विचारा — बरोबर उत्तर देतो","वाक्याचा अर्थ स्वतःच्या शब्दांत सांगतो"];
+const Q=[[],
+["क, म, ह, ळ, श — उच्चार सांगतो","च, ट, त, प, य — उच्चार सांगतो","ग, ज, ड, द, ब — उच्चार सांगतो","न, ण, र, ल, व — उच्चार सांगतो","स, ष, ख, घ, झ मधील ५ अक्षरे ओळखतो"],
+["वाचा: घर","वाचा: फूल","वाचा: वाटी","वाचा: मासा","वाचा: चेंडू"],
+["वाचा: कमळ","वाचा: सायकल","वाचा: चिमणी","वाचा: कलिंगड","वाचा: पतंग"],
+["'अरे वा!' — उद्गारचिन्हाला आवाज बदलतो","'तू कुठे जातोस?' — प्रश्नचिन्हाची दखल घेतो","'आई गेली.' — पूर्णविरामावर थांबतो","'सीता, गीता, रमा' — स्वल्पविरामावर थांबतो","चिन्हांचे नाव सांगतो (. , ? !)"],
+["वाचा: आई घरी आहे.","वाचा: मी शाळेत जातो.","वाचा: ससा पळतो.","वाचा: पाऊस पडतो.","वाचा: बाबा शेतात जातात."],
+["वाचा: सूर्य उगवला.","वाचा: पक्षी उडतो.","वाचा: स्वप्न सुंदर आहे.","वाचा: विद्या शाळेत गेली.","वाचा: तो सत्य बोलतो."],
+cr("बाळ हसते. आई गाते."),
+["वाचा: रमा बागेत फुले तोडते.","वाचा: आजोबा रोज फिरायला जातात.","वाचा: आम्ही गावाला जाणार आहोत.","वाचा: मोर जंगलात नाचतो.","वाचा: बाबा बाजारातून फळे आणतात."],
+["वाचा: माझा मित्र क्रिकेट खेळतो.","वाचा: स्वच्छता आपली जबाबदारी आहे.","वाचा: विद्यार्थी वर्गात शिस्तीत बसतात.","वाचा: शेतकरी कष्टाने पीक पिकवतो.","वाचा: गुरुजी रोज गोष्ट सांगतात."],
+cr("आजी रोज देवळात जाते, तिथे फुले वाहते."),
+["वाचा: प्रत्येक विद्यार्थ्याने वेळेवर शाळेत यावे.","वाचा: आमच्या गावात सुंदर मंदिर आहे.","वाचा: आजीने मला गोड खीर दिली.","वाचा: शेतकरी पावसाची वाट पाहतो आहे.","वाचा: सर्वांनी स्वच्छता पाळली पाहिजे."],
+cr("गावाच्या वेशीवर एक मोठा वड आहे. मुले तिथे खेळतात."),
+["वाचा: आमच्या शाळेत रविवारी स्वच्छता मोहीम घेतली जाते.","वाचा: राजूने आपल्या मित्राला खूप मदत केली.","वाचा: पक्ष्यांसाठी आम्ही रोज अंगणात स्वच्छ पाणी ठेवतो.","वाचा: सायंकाळी सर्व मुले मैदानात क्रिकेट खेळतात.","वाचा: शिक्षकांनी सर्व विद्यार्थ्यांना नेहमी सत्य बोलण्यास सांगितले."],
+cr("दिवाळीत आम्ही घरासमोर सुंदर रांगोळी काढतो आणि पणत्या लावतो.")];
+
+const G={"35":"इ.३/४/५","2":"इ.२ री"};
+const M=[["r","📖","वाचन"],["w","✍️","लेखन"],["n","🔢","संख्याज्ञान"],["o","➕","संख्यांवरील क्रिया"]];
+const LV={r35:15,w35:18,n35:20,o35:29,r2:14,w2:16,n2:11,o2:13};
+const dv=n=>String(n).replace(/\d/g,d=>"०१२३४५६७८९"[d]);
+const W=s=>s.split(" "),ri=(r,a,b)=>a+Math.floor(r()*(b-a+1)),pick=(r,a)=>a[ri(r,0,a.length-1)];
+function R(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const LET=W("अ आ इ ई उ ऊ ए ऐ ओ औ क ख ग घ च छ ज झ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह ळ");
+const P2=W("आई बाबा दादा ताई काका मामा काकू आजी पाटी वाटी मासा ससा मोर चोर दूध फूल घर झाड वेल केस तूप बूट कोट तीर वीर गाय पाय हात नाक कान डोळे केळी पेरू आंबा चेंडू खेळ वाघ बैल भात पोळी भाजी वही दार पान डबा गोटी तेल चौक दीप शेत बाग गाव शाळा वाटा घाट माती वारा पाणी दोरी चारा लोटा सूप सूर मेघ शेळी मेंढी");
+const P3=W("कमळ सायकल चिमणी कलिंगड पतंग मासोळी बदक कबुतर कोंबडी कपाट गरुड हरिण मगर अननस सफरचंद बाहुली गाजर मुळा वांगी भेंडी टोपली परात कचरा दिवा पंखा चमचा ताटली तराजू फुगा गाडी घंटा चावी झोपाळा कंदील करवंद आरसा बांगडी भोपळा कपडे कोथिंबीर कोकिळा ससाणा बगळा पोपट मधमाशी कासव कोल्हा पाऊस अंगण टरबूज वाटाणा शेवगा पेटारा चादर उशी कुलूप");
+const PJ=W("सत्य विद्या पक्षी मित्र चंद्र सूर्य कष्ट स्वच्छ ज्ञान अभ्यास प्रयत्न व्यायाम स्नान ध्यान प्रार्थना विद्यार्थी शिक्षक कृष्ण स्वप्न शक्ती भक्ती मुक्त वृक्ष रक्त अन्न पत्र ग्रंथ ग्राम क्रम प्रेम श्रम स्वर आश्रम पुष्प उत्तर पर्वत सर्प कर्म धर्म वर्ग खर्च सर्व गर्व दर्पण अर्थ तीर्थ पूर्ण स्वार्थ व्यवस्था वस्त्र शस्त्र अस्त मस्त हस्त पुस्तक मत्स्य राष्ट्र वाक्य");
+const KM=W("राजू अमोल रोहन यश विजय सचिन मुलगा किशोर"),KF=W("रमा सीमा मेघा रिया गीता सविता नेहा मुलगी");
+const V=W("खेळ हस गा नाच पळ वाच लिहि"),JO=W("अभ्यास प्रयत्न स्वच्छता व्यायाम कष्ट प्रार्थना स्नान ध्यान"),TM=W("रोज आज सकाळी संध्याकाळी"),LC=W("बागेत मैदानात अंगणात घरी"),VP=W("खेळतात गातात नाचतात पळतात हसतात");
+const EX=W("अरे_वा शाब्बास छान अबब बापरे अरेरे वाह जय_हिंद नमस्कार धन्यवाद सुंदर हुर्रे").map(x=>x.replace("_"," ")),NN=W("आई बाबा ताई दादा आजी आजोबा राजू रमा सीमा अमोल रिया रोहन"),FR=W("आंबा केळी पेरू द्राक्षे संत्री चिक्कू पपई सीताफळ");
+const KN=r=>{const f=r()<.5;return[pick(r,f?KF:KM),f]},vb=(x,f)=>x+(f?"ते":"तो"),sf=r=>pick(r,["सकाळी","संध्याकाळी"]);
+const SN={
+e:r=>{const[n,f]=KN(r);return`${n} ${vb(pick(r,V),f)}.`},
+f:r=>{const[n,f]=KN(r);return`${n} ${pick(r,JO)} ${vb("कर",f)}.`},
+g:r=>{const[n,f]=KN(r),x=r();return x<.34?`${n} कुठे आहे?`:x<.67?`${n} ${vb(pick(r,V),f)}!`:`${n} ${pick(r,JO)} ${vb("कर",f)}!`},
+G:r=>{const[n,f]=KN(r);return`${n} ${pick(r,JO)} ${vb("कर",f)}${pick(r,["!","?"])}`},
+h:r=>{const[n,f]=KN(r);return[n,r()<.4?"":pick(r,TM),pick(r,LC),vb(pick(r,V),f)].filter(Boolean).join(" ")+"."},
+i:r=>{const[n,f]=KN(r);return`${n} ${pick(r,TM)} ${pick(r,JO)} ${vb("कर",f)}.`},
+j:r=>{const[n,f]=KN(r);if(r()<.5)return`${n} ${pick(r,LC)} काय ${vb("कर",f)}?`;const q=new Set();while(q.size<3)q.add(pick(r,KM.concat(KF)));const[a,b,c]=[...q];return`${a}, ${b}, ${c} ${pick(r,VP)}.`},
+k:r=>{const[n,f]=KN(r),v=vb(pick(r,V),f),l=pick(r,LC);return r()<.5?`${n} ${pick(r,TM)} ${l} ${v}.`:`${n} रोज सकाळी ${l} ${v}.`},
+l:r=>{const[n,f]=KN(r),j=pick(r,JO),v=vb("कर",f);return r()<.5?`${n} ${pick(r,TM)} ${j} ${v}.`:`${n} रोज ${sf(r)} ${j} ${v}.`},
+m:r=>{const[n,f]=KN(r),j=pick(r,JO),v=vb("कर",f);return r()<.5?`${n} रोज ${j} का ${v}?`:`${n} रोज ${sf(r)} ${j} ${v}!`},
+n:r=>{const[n,f]=KN(r),j=pick(r,JO),v=vb("कर",f),l=pick(r,LC);return r()<.5?`${n} रोज सकाळी ${l} ${j} ${v}.`:`${n} रोज सकाळी ${l} मन लावून ${j} ${v}.`},
+o:r=>{const[n,f]=KN(r);return`${n} सकाळी ${pick(r,JO)} ${vb("कर",f)}, संध्याकाळी ${pick(r,LC)} ${vb(pick(r,V),f)}.`},
+q:r=>{const[n,f]=KN(r);return`${n} रोज सकाळी ${pick(r,LC)} मन लावून ${vb(pick(r,V),f)}.`}};
+const ca=x=>cr(x).map((y,j)=>j?x+" — "+y:y);
+const rm=K=>i=>{const c=K[i];
+if(c=="a")return[r=>{const q=new Set();while(q.size<4)q.add(pick(r,LET));return[...q].sort().join(", ")+" — उच्चार सांगतो"}];
+if(c=="b"||c=="c")return[r=>"वाचा: "+pick(r,c=="b"?P2:P3)];
+if(c=="d")return[r=>{const x=r();return"वाचा (चिन्हावर लक्ष द्या): "+(x<.25?pick(r,EX)+"!":x<.5?pick(r,NN)+" कुठे आहे?":x<.75?(()=>{const q=new Set();while(q.size<3)q.add(pick(r,FR));return[...q].join(", ")+"."})():SN.e(r))}];
+const ac="gjmo".includes(c);return[ac?SN[c]:r=>"वाचा: "+SN[c](r),ac]};
+const RK35=["-","a","b","c","d","e","f","g","h","i","j","l","m","n","o"],RK2=["-","a","b","c","d","e","f","g","h","i","j","k","l","m"];
+const WK=["-","wl","ww","ws","w5","w6","w7",["c","e",1,2],["c","k",2,3,1],["d","e",1,2],["d","G",1,2],["d","e",2,3],["d","G",3,4],["d","k",1,2],["d","m",1,1],["d","m",2,3],["d","q",4,5],["d","o",4,5,1]];
+const wm=i=>{const c=WK[i],L3=r=>{const q=new Set();while(q.size<3)q.add(pick(r,LET));return[...q].sort().join(", ")};
+if(c=="wl")return[r=>"पाहून लिहा: "+L3(r)];if(c=="ws")return[r=>"ध्वनी ऐकून अक्षरे लिहा: "+L3(r)];
+if(c=="ww")return[r=>"पाहून लिहा: "+pick(r,P2.concat(P3))];
+if(c=="w5")return[r=>"ऐकून लिहा: "+pick(r,P2)];if(c=="w6")return[r=>"ऐकून लिहा: "+pick(r,P3)];if(c=="w7")return[r=>"ऐकून लिहा: "+pick(r,PJ)];
+const[md,k,lo,hi,cm]=c;return[r=>{const n=ri(r,lo,hi),q=[];for(let z=0;z<n;z++)q.push(SN[k](r));return(md=="c"?"पाहून लिहा: ":"ऐकून लिहा (शिक्षकांनी वाचावे): ")+q.join(" ")+(cm?" — आकलन: अर्थ विचारा":"")}]};
+const NA=W("शून्य एक दोन तीन चार पाच सहा सात आठ नऊ दहा अकरा बारा तेरा चौदा पंधरा सोळा सतरा अठरा एकोणीस वीस एकवीस बावीस तेवीस चोवीस पंचवीस सव्वीस सत्तावीस अठ्ठावीस एकोणतीस तीस एकतीस बत्तीस तेहतीस चौतीस पस्तीस छत्तीस सदतीस अडतीस एकोणचाळीस चाळीस एक्केचाळीस बेचाळीस त्रेचाळीस चव्वेचाळीस पंचेचाळीस सेहेचाळीस सत्तेचाळीस अठ्ठेचाळीस एकोणपन्नास पन्नास"),EM=["🍎","🌸","⚽","🐟","⭐","🍌"];
+const NS=[0,["s",0,9],["c",1,9],["t",2,9],["r",0,9],["w",0,9],["s",10,20],["c",10,20],["t",10,20],["r",10,20],["w",10,20],["s",21,50],["p",21,50],["w",21,50],["s",51,99],["p",51,99],["W",51,99],["a",0,9],["a",0,20],["a",0,50]];
+const nm=i=>{const[ty,lo,hi]=NS[i];return[r=>{const n=ri(r,lo,hi),e=pick(r,EM),N=NA[n],d=dv(n),x=n>=21?[Math.floor(n/10),n%10]:0;
+if(ty=="s"){const a=ri(r,lo,hi-2),b=ri(r,a+2,hi);return r()<.5?`${dv(a)} ते ${dv(b)} संख्यानामे क्रमाने म्हणा`:`${dv(a)} पासून ${dv(b)} पर्यंत मोठ्याने म्हणा`}
+if(ty=="c")return`${e.repeat(n)} — किती आहेत? मोजा`;
+if(ty=="t")return`${e.repeat(n)} मधून ${dv(ri(r,1,n-1))} वस्तू काढून द्या`;
+if(ty=="r")return pick(r,[`वाचा: ${d}`,`ही संख्या सांगा: ${d}`,`कोणता अंक आहे? ${d}`,`${d} चे नाव सांगा`,`${d} दाखवा (${d}, ${dv((n+3)%(hi+1))}, ${dv((n+ri(r,4,6))%(hi+1))} मधून)`,`${d} वाचून दाखवा`]);
+if(ty=="w")return pick(r,[`ऐकून अंकात लिहा: ${N} (${d})`,`'${N}' हा अंक लिहा (${d})`,`${N} — अंकात लिहा (${d})`,`शिक्षकांनी '${N}' म्हणावे; विद्यार्थी अंक लिहितो (${d})`,`'${N}' कसे लिहितात? (${d})`,`${N} = ? (${d})`]);
+if(ty=="p")return r()<.5?`${d} वाचा व दशक-एकक सांगा (दशक ${dv(x[0])}, एकक ${dv(x[1])})`:`${d} मध्ये दशकस्थानी कोणता अंक? (${dv(x[0])})`;
+if(ty=="W")return r()<.5?`शिक्षकांनी सांगावे: ${d} — विद्यार्थी अंकात लिहितो`:`${d} बोलून सांगा, विद्यार्थी अंकात लिहितो`;
+return pick(r,[`${d} चे नाव अक्षरी लिहा (${N})`,`अक्षरात लिहा: ${d} (${N})`,`${d} = ? अक्षरी (${N})`,`'${d}' ला मराठीत काय म्हणतात? लिहा (${N})`,`${d} हा अंक अक्षरांत लिहा (${N})`,`संख्यानाम लिहा: ${d} (${N})`])}]};
+const OS=[[4,"c","+"],[4,"c","+"],[4,"s","+"],[4,"w","+"],[4,"c","-"],[4,"s","-"],[4,"w","-"],[9,"c","+"],[9,"s","+"],[9,"w","+"],[9,"c","-"],[9,"s","-"],[9,"w","-"],[20,"c","+"],[20,"s","+"],[20,"w","+"],[20,"c","-"],[20,"s","-"],[20,"w","-"],[50,"s","+"],[50,"w","+"],[50,"s","-"],[50,"w","-"],[99,"p","+",0],[99,"p","+",1],[99,"w","+"],[99,"p","-",0],[99,"p","-",1],[99,"w","-"]];
+const OS2=[[4,"c","+"],[4,"c","+"],[4,"s","+"],[4,"w","+"],[9,"c","+",0,1],[9,"s","+",0,1],[9,"w","+",0,1],[4,"c","-"],[4,"s","-"],[9,"w","-"],[9,"c","-"],[9,"s","-"],[9,"w","-"]];
+const LB={c:"मूर्त वस्तूंचा वापर करून",s:"चिन्ह वापरून"};
+const otf=O=>O.map((o,i)=>{const m=dv(o[0]),a=o[2]=="+"?"बेरीज":"वजाबाकी",g=o[2]=="+"?"बेरजेची":"वजाबाकीची";
+if(!i)return"० ते ४ पर्यंतच्या संख्यांची मूर्त वस्तूंचा वापर करून बेरीज करता येत नाही.";
+if(o[1]=="w")return`० ते ${m} पर्यंतच्या संख्यांचा वापर दैनंदिन परिस्थितीत करून ${g} शाब्दिक उदाहरणे सोडवतो.`;
+if(o[1]=="p")return`स्थानिक किंमत संकल्पना वापरून ० ते ९९ पर्यंतच्या संख्यांची ${a} करतो (${o[3]?"हातच्याची":"बिनहातच्याची"}).`;
+return`० ते ${m} पर्यंतच्या संख्यांची ${LB[o[1]]} ${a} करतो.`});
+const NM=W("राजू सीमा अमोल रिया रोहन मेघा काव्या यश"),IT=W("पेन लाडू चेंडू मणी पेन्सिल खडू संत्री केळी पेरू कप"),LO={4:2,9:5,20:10,50:21,99:50};
+const okp=(a,b,op,cy)=>op=="+"?(a+b<=99&&(cy?a%10+b%10>=10:a%10+b%10<10)):(a>b&&(cy?a%10<b%10:a%10>=b%10));
+const om=O=>i=>{const[m,k,op,cy,x]=O[i];return[r=>{let a,b,t=0;const lo=k=="s"&&m==4?0:LO[m],sg=op=="+"?"+":"−",it=pick(r,IT),nm=pick(r,NM);
+if(k=="p"){do{a=ri(r,10,89);b=ri(r,10,89);if(op=="-"&&a<b)[a,b]=[b,a];t++}while(t<999&&!okp(a,b,op,cy))}
+else if(op=="+"){if(x){a=ri(r,1,9);b=ri(r,1,9)}else{const S=ri(r,lo,m);a=k=="s"?ri(r,0,S):ri(r,1,S-1);b=S-a}}
+else{a=ri(r,lo,m);b=k=="s"?ri(r,0,a):ri(r,1,a-1)}
+const e=a>1?"आहेत":"आहे";
+return dv(k=="w"?(op=="+"?`${nm}कडे ${a} ${it} ${e}. आणखी ${b} ${it} मिळाल्यास एकूण किती ${it} होतील?`:`${nm}कडे ${a} ${it} ${e}. त्यातील ${b} ${it} मित्राला दिल्यास किती ${it} उरतील?`):k=="c"?(op=="+"?`${a} ${it} आणि ${b} ${it} मिळून किती ${it} होतील?`:`${a} ${it} ${e}. त्यातील ${b} काढले तर किती उरतील?`)+" (साहित्य वापरा)":pick(r,[`${a} ${sg} ${b} = ?`,`${a} ${sg} ${b} = □`,`${op=="+"?"बेरीज":"वजाबाकी"} करा: ${a} ${sg} ${b}`,`${a} ${sg} ${b} किती?`]))}]};
+const T2=["सर्व अक्षरे व ध्वनी ओळखत नाही","सर्व अक्षरे व ध्वनी ओळखतो","स्वरचिन्हांसह दोन अक्षरी शब्द वाचतो","३–४ अक्षरी शब्द वाचतो","साध्या विरामचिन्हांची दखल घेतो","परिचित २–३ शब्दांची लहान वाक्ये वाचतो","तीच वाक्ये, जोडाक्षरयुक्त","२–३ शब्द, अचूक, विरामचिन्हांसह, आरोह-अवरोहासह योग्य गतीने","परिचित ३–५ शब्दांची वाक्ये","३–५ शब्द, जोडाक्षरयुक्त वाक्ये","३–५ शब्द, अचूक, विरामचिन्हांसह, आरोह-अवरोहासह","अपरिचित ४–५ शब्दांची वाक्ये वाचतो","अपरिचित ४–५ शब्द, जोडाक्षरयुक्त वाक्ये","अपरिचित ४–५ शब्द, अचूक, विरामचिन्हांसह, आरोह-अवरोहासह"];
+const TW=["अक्षरे पाहून लिहू शकत नाही","अक्षरे पाहून लिहितो","सोपे शब्द पाहून लिहितो","ध्वनी ऐकून अक्षरे लिहितो","काही अक्षरे व स्वरचिन्हे वापरून शब्द लिहितो","सर्व अक्षरे व स्वरचिन्हे वापरून शब्द लिहितो","स्वरचिन्हयुक्त व जोडाक्षरयुक्त शब्द लिहितो","२–३ शब्दांची १–२ वाक्ये पाहून लिहितो","४–५ शब्द, २–३ वाक्ये आकलनासह पाहून लिहितो","२–३ शब्दांची १–२ वाक्ये ऐकून लिहितो","२–३ शब्द व जोडाक्षरे, १–२ वाक्ये विरामचिन्हांसह ऐकून","२–३ शब्दांची २–३ वाक्ये ऐकून","२–३ शब्द व जोडाक्षरे, ३–४ वाक्ये विरामचिन्हांसह","श्रुतलेखन: ४–५ शब्दांची १–२ वाक्ये","४–५ शब्द व जोडाक्षरे, १ वाक्य विरामचिन्हांसह","४–५ शब्द व जोडाक्षरे, २–३ वाक्ये विरामचिन्हांसह","६–८ शब्दांची ४–५ सोपी वाक्ये ऐकून","६–८ शब्द व जोडाक्षरे, ४–५ वाक्ये विरामचिन्हांसह, आकलनासह"];
+const TN=["० ते ९ संख्यानामे क्रमाने म्हणता येत नाही","० ते ९ संख्यानामे क्रमाने म्हणतो","० ते ९ वस्तू मोजतो","९ पर्यंतच्या समूहातून ठराविक संख्येच्या वस्तू काढतो","० ते ९ संख्या ओळखतो/वाचतो","० ते ९ संख्या लिहितो (अंकी)","१० ते २० संख्यानामे क्रमाने म्हणतो","१० ते २० वस्तू मोजतो","२० पर्यंतच्या समूहातून ठराविक वस्तू काढतो","१० ते २० संख्या ओळखतो/वाचतो","१० ते २० संख्या लिहितो (अंकी)","२१ ते ५० संख्यानामे क्रमाने म्हणतो","स्थानिक किंमत संकल्पनेने २१ ते ५० संख्या ओळखतो/वाचतो","२१ ते ५० संख्या लिहितो (अंकी)","५१ ते ९९ संख्यानामे क्रमाने म्हणतो","स्थानिक किंमत संकल्पनेने ५१ ते ९९ संख्या ओळखतो/वाचतो","५१ ते ९९ संख्या लिहितो (अंकी)","० ते ९ संख्यानामे लिहितो (अक्षरी)","० ते २० संख्यानामे लिहितो (अक्षरी)","० ते ५० संख्यानामे लिहितो (अक्षरी)"];
+const D={r35:{t:T,m:rm(RK35),q:Q},r2:{t:T2,m:rm(RK2)},w35:{t:TW,m:wm},w2:{t:TW.slice(0,16),m:wm},n35:{t:TN,m:nm},n2:{t:TN.slice(0,11),m:nm},o35:{t:otf(OS),m:om(OS)},o2:{t:otf(OS2),m:om(OS2)}};
+const C={};
+function sets(k,i){const id=k+i;if(C[id])return C[id];const d=D[k],[f,ac]=d.m(i),r=R(i*131+k.charCodeAt(0)*7+k.length),seen=new Set(),L=[],n=ac?10:50;
+for(let g=0;L.length<n&&g<20000;g++){const x=f(r);if(!seen.has(x)){seen.add(x);L.push(x)}}
+const S=[];if(ac)L.forEach(x=>S.push(ca(x)));else for(let z=0;z<L.length;z+=5)S.push(L.slice(z,z+5));
+if(d.q&&d.q[i]&&S.length)S[0]=d.q[i];return C[id]=S}
+const CAP=window.Capacitor,NAT=!!(CAP&&CAP.isNativePlatform&&CAP.isNativePlatform()),AM=NAT&&CAP.Plugins?CAP.Plugins.AdMob:null,AC=window.ADCFG||{};
+let adOK=0,adBan=0,rwReady=0,adH=0;
+const BAN=["home","rep","about","priv"];
+const adb=()=>"";
+function pad(){document.body.style.paddingBottom=(adBan?adH:0)+"px"}
+async function adInit(){if(!AM||!AC.appId)return;try{
+try{const i=await AM.requestConsentInfo();if(i.isConsentFormAvailable&&i.status==="REQUIRED")await AM.showConsentForm()}catch(e){}
+await AM.initialize({initializeForTesting:!!AC.testing});adOK=1;
+AM.addListener("bannerAdSizeChanged",z=>{adH=(z&&z.height)||0;pad()});
+AM.addListener("onRewardedVideoAdLoaded",()=>{rwReady=1});
+AM.addListener("onRewardedVideoAdFailedToLoad",()=>{rwReady=0});
+AM.addListener("onRewardedVideoAdReward",()=>{if(v.p==="res"&&!v.rd)rwDone()});
+AM.addListener("onRewardedVideoAdDismissed",()=>{rwReady=0;setTimeout(rwLoad,1500)});
+adSync();rwLoad()}catch(e){}}
+async function adSync(){if(!adOK)return;const w=BAN.includes(v.p);
+try{if(w&&!adBan){adBan=1;await AM.showBanner({adId:AC.banner,adSize:"ADAPTIVE_BANNER",position:"BOTTOM_CENTER",margin:0,isTesting:!!AC.testing})}
+else if(!w&&adBan){adBan=0;await AM.removeBanner();pad()}}catch(e){adBan=0;pad()}}
+async function rwLoad(){if(!adOK||rwReady)return;try{await AM.prepareRewardVideoAd({adId:AC.reward,isTesting:!!AC.testing})}catch(e){}}
+function rwDone(){const s=F(v.id);s.pts=(s.pts||0)+2;save();v.rd=1;v.msg="+२ ⭐ मिळाले!";render()}
+async function rw(){if(!NAT){rwDone();return}
+if(!rwReady){v.msg="जाहिरात सध्या उपलब्ध नाही, थोड्या वेळाने पुन्हा प्रयत्न करा";rwLoad();render();return}
+try{await AM.showRewardVideoAd()}catch(e){v.msg="जाहिरात दाखवता आली नाही";rwReady=0;rwLoad();render()}}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>"&#"+c.charCodeAt(0)+";");
+let S={st:[]};try{S=JSON.parse(localStorage.getItem("nip"))||S}catch(e){}
+function mig(){S.st=(S.st||[]).map(s=>{if(!s.res){s.res={};if(s.r)s.res.r35=s.r;delete s.r}s.g=s.g=="2"?"2":"35";s.id=Number(s.id)||Date.now()+Math.floor(Math.random()*1e6);s.dt=s.dt||{};s.h=s.h||[];return s})}mig();
+const save=()=>{try{localStorage.setItem("nip",JSON.stringify(S))}catch(e){}};
+let v={p:"home",t:"r",g:"35"};const $=id=>document.getElementById(id);
+const F=id=>S.st.find(x=>x.id==id),td=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")},key=(m,s)=>m+s.g;
+const last=s=>Object.values(s.dt).sort().pop()||"";
+function rec(s,k,l){s.res[k]=l;s.dt[k]=td();s.h.push({k,l,d:td()});save()}
+function go(p){v={p,t:v.t,g:v.g};render()}
+function add(){const n=$("nm").value.trim();if(!n)return;v.g=$("gr").value;S.st.push({id:Date.now(),n,g:v.g,res:{},dt:{},h:[]});save();render()}
+function del(id){if(confirm("हा विद्यार्थी काढायचा?")){S.st=S.st.filter(s=>s.id!=id);save();render()}}
+function start(id){rwLoad();v={p:"test",t:v.t,g:v.g,id,i:1,s:0,ck:[]};render()}
+function tg(j){const a=v.ck[v.s]||(v.ck[v.s]=[]);a[j]=!a[j];v.msg="";render()}
+function fin(r){const s=F(v.id);rec(s,key(v.t,s),r);v={p:"res",t:v.t,g:v.g,id:v.id};render()}
+function pass(){const s=F(v.id),N=LV[key(v.t,s)];s.pd=s.pd||{};const pk=key(v.t,s)+"_"+v.i,gn=!s.pd[pk];if(gn){s.pd[pk]=1;s.pts=(s.pts||0)+1}save();const sx=gn?" +१ ⭐":"";if(v.i<N-1){v.i++;v.ck=[];v.s=0;v.msg="🎉 पास!"+sx;render()}else{fin(N);v.msg="🏆 सर्व स्तर पूर्ण!"+sx;render()}}
+function back(){v.i--;v.ck=[];v.s=0;v.msg="";render()}
+function fl(){if(confirm("या स्तरावर नापास करायचे? निकाल स्तर "+v.i+" नोंदवला जाईल."))fin(v.i)}
+function setl(id,k,l){const s=F(id);if(l==="")delete s.res[k];else rec(s,k,+l);save();render()}
+function cp(id){const e=$(id);e.select();try{document.execCommand("copy")}catch(x){}}
+function imp(){try{const o=JSON.parse($("im").value);if(!o||!Array.isArray(o.st))throw 0;if(confirm("सध्याचा सर्व डेटा बदलला जाईल. पुढे जायचे?")){S=o;mig();save();go("home")}}catch(e){alert("बॅकअप वैध नाही")}}
+const nav=()=>`<nav class="np"><div class="row">${[["home","🏠 मुख्य"],["rep","📊 अहवाल"],["bk","💾 बॅकअप"],["about","ℹ️ About"],["priv","🔒 प्रायव्हसी पॉलिसी"],["rate","⭐ रेटिंग"]].map(a=>`<button class="${v.p==a[0]?"on":""}" onclick="go('${a[0]}')">${a[1]}</button>`).join("")}</div>${v.p=="home"?`<div class="row tabs">${M.map(m=>`<button class="${v.t==m[0]?"on":""}" onclick="v.t='${m[0]}';render()">${m[1]} ${m[2]}</button>`).join("")}</div>`:""}</nav>`;
+function home(){const m=M.find(x=>x[0]==v.t);
+const rows=S.st.map(s=>{const k=m[0]+s.g,N=LV[k],r=s.res[k];
+return `<div class="row sp st"><div><b>${esc(s.n)}</b> <span class="badge">${G[s.g]}</span> <span class="m">⭐${s.pts||0}</span><br><span class="m">${r?"स्तर "+r+" / "+N+(s.dt[k]?" · "+s.dt[k]:""):"अजून तपासणी नाही"}</span></div><div class="row">${D[k]?`<button class="btn" onclick="start(${s.id})">परीक्षा</button>`:`<select onchange="setl(${s.id},'${k}',this.value)"><option value="">स्तर निवडा</option>${Array.from({length:N},(_,i)=>`<option value="${i+1}"${r==i+1?" selected":""}>${i+1}</option>`).join("")}</select>`}<button class="btn g" onclick="del(${s.id})">✕</button></div></div>`}).join("");
+const note=S.st.some(s=>!D[m[0]+s.g])?`<p class="m">ज्या वर्गाचे प्रश्न अजून जोडले नाहीत तिथे परिशिष्ट ४ नुसार स्तर थेट निवडा.</p>`:"";
+return `<div class="card"><h2>विद्यार्थी जोडा</h2><div class="row"><input id="nm" placeholder="विद्यार्थ्याचे नाव"><select id="gr" style="width:120px"><option value="35"${v.g!="2"?" selected":""}>${G["35"]}</option><option value="2"${v.g=="2"?" selected":""}>${G["2"]}</option></select><button class="btn" onclick="add()">+</button></div></div>
+<div class="card"><h2>${m[1]} ${m[2]} (${S.st.length})</h2>${note}${rows||'<p class="m">वर विद्यार्थी जोडा.</p>'}</div>`}
+function test(){const s=F(v.id),k=key(v.t,s),N=LV[k],d=D[k],i=v.i,ss=sets(k,i),q=ss[v.s],dn=z=>ss[z].every((_,j)=>v.ck[z]&&v.ck[z][j]),all=ss.some((_,z)=>dn(z)),cs=v.ck[v.s]||[];
+return `<div class="card"><div class="row sp"><b>${esc(s.n)}</b><span class="badge">स्तर ${i+1} / ${N}</span></div><div class="bar"><b style="width:${(i+1)/N*100}%"></b></div>${v.msg?`<p style="color:var(--ok);font-weight:700;margin:0">${v.msg}</p>`:""}<h2>${d.t[i]}</h2><p class="m">प्रत्येक योग्य उत्तरावर टॅप करा. कोणताही एक संच पूर्ण बरोबर असेल तर पास.</p>${ss.length>1?`<div class="sets">${ss.map((_,z)=>`<button class="${z==v.s?"on ":""}${dn(z)?"dn":""}" onclick="v.s=${z};render()">${z+1}</button>`).join("")}</div>`:""}${q.map((t,j)=>`<div class="q${cs[j]?" on":""}${v.big?" bg":""}" onclick="tg(${j})"><i>${cs[j]?"✓":""}</i>${t}</div>`).join("")}
+<div class="row" style="margin-top:12px"><button class="btn no" style="flex:1" onclick="fl()">नापास – थांबा</button><button class="btn ok" style="flex:1" ${all?"":"disabled"} onclick="pass()">${i==N-1?"पास → पूर्ण":"पास → पुढे"}</button></div></div>
+<div class="row"><button class="btn g" onclick="go('home')">← मुख्य</button>${i>1?`<button class="btn g" onclick="back()">‹ मागील स्तर</button>`:""}<button class="btn g" onclick="v.big=!v.big;render()">👁 मोठे अक्षर</button></div>`}
+function res(){const s=F(v.id),k=key(v.t,s),N=LV[k],r=s.res[k],d=D[k];
+return `<div class="card"><h2 style="text-align:center">${esc(s.n)} – निकाल</h2><div class="big">${r} / ${N}</div><p style="text-align:center"><b>${d.t[r-1]}</b></p>${r<N?`<p class="m" style="text-align:center">पुढील ध्येय (स्तर ${r+1}): ${d.t[r]}</p>`:""}${v.msg?`<p style="text-align:center;color:var(--ok);font-weight:700">${v.msg}</p>`:""}<p class="m" style="text-align:center">⭐ एकूण: ${s.pts||0}</p></div><div class="row np"><button class="btn" style="flex:1" onclick="go('home')">पूर्ण</button>${v.rd?"":`<button class="btn g" style="flex:1" onclick="rw()">📺 जाहिरात पाहा +२ ⭐</button>`}</div>`}
+function rep(){return `<div class="card"><h2>📊 अहवाल – अध्ययन स्तर (परिशिष्ट ४)</h2><div style="overflow-x:auto"><table><tr><th>अ.क्र.</th><th>नाव</th><th>वर्ग</th>${M.map(m=>`<th>${m[2]}</th>`).join("")}<th>तारीख</th></tr>${S.st.map((s,j)=>`<tr><td>${j+1}</td><td>${esc(s.n)}</td><td>${G[s.g]}</td>${M.map(m=>{const k=m[0]+s.g,r=s.res[k];return `<td>${r?r+"/"+LV[k]:"-"}</td>`}).join("")}<td>${last(s)||"-"}</td></tr>`).join("")}</table></div></div><div class="row np"><button class="btn" onclick="print()">🖨 प्रिंट</button></div>`}
+function tsv(){return [["नाव","वर्ग",...M.map(m=>m[2]),"तारीख"].join("\t")].concat(S.st.map(s=>[s.n.replace(/\s+/g," "),G[s.g],...M.map(m=>s.res[m[0]+s.g]||""),last(s)].join("\t"))).join("\n")}
+function bk(){return `<div class="card"><h2>📋 Excel साठी कॉपी</h2><textarea id="tv" readonly rows="5">${esc(tsv())}</textarea><button class="btn" onclick="cp('tv')">कॉपी</button></div><div class="card"><h2>💾 बॅकअप</h2><textarea id="bj" readonly rows="4">${esc(JSON.stringify(S))}</textarea><button class="btn" onclick="cp('bj')">कॉपी करून सुरक्षित ठेवा</button></div><div class="card"><h2>⬆ बॅकअप परत आणा</h2><textarea id="im" rows="4" placeholder="येथे बॅकअप पेस्ट करा"></textarea><button class="btn" onclick="imp()">परत आणा</button></div>`}
+
+const APP="महानिपुण विद्यार्थी स्तर पडताळणी",PKG=(window.ADCFG||{}).pkg||"com.yourname.mahanipun",DEV=(window.ADCFG||{}).dev||"विकसक",MAIL=(window.ADCFG||{}).mail||"you@example.com",VER="1.0",PD="०६-१०-२०२६";
+const PLAY="https://play.google.com/store/apps/details?id="+PKG;
+function about(){return `<div class="card pv"><h2>ℹ️ ${APP}</h2><p class="m">आवृत्ती ${VER} · विकसक: ${DEV}</p>
+<p>शिक्षकांसाठी बनवलेले साधे ॲप. इयत्ता २ री व ३/४/५ चे विद्यार्थी वाचन, लेखन, संख्याज्ञान व संख्यांवरील क्रिया यांमध्ये कोणत्या अध्ययन स्तरावर आहेत हे तपासण्यासाठी प्रश्नसंच देते व निकालाचा अहवाल बनवते.</p>
+<h3>वैशिष्ट्ये</h3><ul><li>विद्यार्थीनिहाय स्तर पडताळणी व ⭐ गुण</li><li>अहवाल तक्ता, प्रिंट व Excel साठी कॉपी</li><li>मुख्य सुविधा इंटरनेटशिवाय चालतात (जाहिरातींसाठी इंटरनेट लागते); विद्यार्थ्यांचा डेटा फक्त तुमच्या फोनमध्ये</li><li>बॅकअप / परत आणा सुविधा</li></ul>
+<h3>सूचना</h3><p class="m">हे ॲप शासनाचे अधिकृत ॲप नाही व कोणत्याही शासकीय विभागाशी संलग्न नाही. अध्ययन स्तरांचे वर्णन शैक्षणिक वापरासाठी शासकीय मार्गदर्शनावर आधारित आहे. अंतिम नोंदी शासनाच्या अधिकृत परिशिष्टांनुसार तपासा.</p>
+<h3>संपर्क</h3><p><a href="mailto:${MAIL}">${MAIL}</a></p></div>`}
+function priv(){return `<div class="card pv"><h2>🔒 प्रायव्हसी पॉलिसी</h2><p class="m">अद्ययावत: ${PD}</p>
+<h3>१. आम्ही कोणती माहिती गोळा करतो?</h3><p>आम्ही स्वतः कोणतीही वैयक्तिक माहिती गोळा करत नाही. खाते / लॉगिन नाही.</p>
+<h3>२. तुम्ही भरलेली माहिती</h3><p>विद्यार्थ्यांची नावे, वर्ग, स्तर निकाल व ⭐ गुण हे फक्त तुमच्या उपकरणात (ब्राउझर/ॲप स्टोरेज) साठवले जातात. ती आमच्या सर्व्हरवर पाठवली जात नाही.</p>
+<h3>३. शेअरिंग</h3><p>आम्ही कोणाशीही माहिती विकत नाही किंवा शेअर करत नाही. बॅकअप कॉपी, प्रिंट किंवा Excel कॉपी तुम्ही स्वतः केल्यासच बाहेर जाते.</p>
+<h3>४. मुलांची माहिती</h3><p>हे ॲप शिक्षक / पालकांसाठी आहे. मुलांचा कोणताही डेटा विकसकाकडे येत नाही. शक्यतो विद्यार्थ्यांची पूर्ण नावे ऐवजी पहिले नाव / क्रमांक वापरावा.</p>
+<h3>५. डेटा हटवणे</h3><p>एखादा विद्यार्थी ✕ दाबून काढा, किंवा फोनच्या सेटिंगमधून ॲपचा डेटा / कॅशे साफ करा; सर्व माहिती कायमची हटते.</p>
+<h3>६. जाहिराती व तृतीय पक्ष</h3><p>हे ॲप Google AdMob च्या जाहिराती दाखवते. AdMob जाहिरातींसाठी जाहिरात ओळख क्रमांक (Advertising ID), डिव्हाइस माहिती व अंदाजे स्थान गोळा करू शकते. विद्यार्थ्यांची नावे, वर्ग किंवा निकाल जाहिरात प्रदात्याला पाठवले जात नाहीत. तपशील: policies.google.com/technologies/partner-sites. काही प्रदेशांत जाहिरातींसाठी संमती विचारली जाते.</p>
+<h3>७. बदल व संपर्क</h3><p>धोरणात बदल झाल्यास येथे प्रसिद्ध केले जातील. प्रश्नांसाठी: <a href="mailto:${MAIL}">${MAIL}</a></p></div>`}
+function setR(n){S.rate=n;save();render()}
+function rate(){const r=S.rate||0;return `<div class="card pv" style="text-align:center"><h2>⭐ ॲपला रेटिंग द्या</h2><p class="m">ॲप आवडला असेल तर रेटिंग द्या, तुमचा अभिप्राय आम्हाला सुधारणा करण्यास मदत करतो.</p>
+<div class="stars">${[1,2,3,4,5].map(n=>`<button onclick="setR(${n})">${n<=r?"★":"☆"}</button>`).join("")}</div>
+<p class="m">${r?"तुमचे रेटिंग: "+dv(r)+" / ५":"तारे निवडा"}</p>
+<div class="row" style="flex-direction:column;align-items:stretch;gap:8px"><button class="btn" onclick="location.href='${PLAY}'">Play Store वर रेटिंग द्या</button>
+<button class="btn g" onclick="location.href='mailto:${MAIL}?subject='+encodeURIComponent('${APP} अभिप्राय')+'&body='+encodeURIComponent('रेटिंग: '+(S.rate||'-')+'/5%0A')">✉️ अभिप्राय पाठवा</button></div></div>`}
+function render(){$("nv").innerHTML=v.p=="test"?"":nav();$("app").innerHTML=({home,test,res,rep,bk,about,priv,rate})[v.p]()+(v.p=="test"?"":adb());scrollTo(0,0);adSync()}
+render();adInit();
+</script></body></html>
