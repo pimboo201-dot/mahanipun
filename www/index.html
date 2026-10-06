@@ -37,6 +37,7 @@ nav button.on{color:var(--p);border-bottom-color:var(--p)}.tabs{overflow-x:auto;
 .sets .on{background:var(--p);color:#fff}.sets .dn{box-shadow:inset 0 0 0 3px var(--ok)}
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.88);color:#fff;display:grid;place-items:center;text-align:center;font-size:22px;z-index:20}
 @media print{header,.np{display:none!important}:root{--bg:#fff!important;--c:#fff!important;--t:#000!important;--m:#444!important;--b:#999!important}}
+.ml{padding:4px 14px}.mi{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;border-bottom:1px solid var(--b);padding:14px 0;text-align:left;color:var(--t);cursor:pointer}.mi:last-child{border-bottom:0}.mi .ic{font-size:22px;width:36px;height:36px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;flex:none}.mi .tx{flex:1;display:flex;flex-direction:column}.mi small{color:var(--m);font-size:12px}.mi .ch{color:var(--m);font-size:22px}
 </style></head><body>
 <header><h1>📘 महानिपुण विद्यार्थी स्तर पडताळणी</h1><p>विद्यार्थ्यांचा अध्ययन स्तर सोप्या पद्धतीने तपासा</p></header>
 <div id="nv"></div><main id="app"></main>
@@ -139,7 +140,7 @@ const S=[];if(ac)L.forEach(x=>S.push(ca(x)));else for(let z=0;z<L.length;z+=5)S.
 if(d.q&&d.q[i]&&S.length)S[0]=d.q[i];return C[id]=S}
 const CAP=window.Capacitor,NAT=!!(CAP&&CAP.isNativePlatform&&CAP.isNativePlatform()),AM=NAT&&CAP.Plugins?CAP.Plugins.AdMob:null,AC=window.ADCFG||{};
 let adOK=0,adBan=0,rwReady=0,adH=0;
-const BAN=["home","rep","about","priv"];
+const adWant=()=>v.p==="home"||v.p==="rep"||(v.p==="more"&&(!v.m||v.m==="about"||v.m==="priv"));
 const adb=()=>"";
 function pad(){document.body.style.paddingBottom=(adBan?adH:0)+"px"}
 async function adInit(){if(!AM||!AC.appId)return;try{
@@ -151,7 +152,7 @@ AM.addListener("onRewardedVideoAdFailedToLoad",()=>{rwReady=0});
 AM.addListener("onRewardedVideoAdReward",()=>{if(v.p==="res"&&!v.rd)rwDone()});
 AM.addListener("onRewardedVideoAdDismissed",()=>{rwReady=0;setTimeout(rwLoad,1500)});
 adSync();rwLoad()}catch(e){}}
-async function adSync(){if(!adOK)return;const w=BAN.includes(v.p);
+async function adSync(){if(!adOK)return;const w=adWant();
 try{if(w&&!adBan){adBan=1;await AM.showBanner({adId:AC.banner,adSize:"ADAPTIVE_BANNER",position:"BOTTOM_CENTER",margin:0,isTesting:!!AC.testing})}
 else if(!w&&adBan){adBan=0;await AM.removeBanner();pad()}}catch(e){adBan=0;pad()}}
 async function rwLoad(){if(!adOK||rwReady)return;try{await AM.prepareRewardVideoAd({adId:AC.reward,isTesting:!!AC.testing})}catch(e){}}
@@ -173,21 +174,21 @@ function del(id){if(confirm("हा विद्यार्थी काढा�
 function start(id){rwLoad();v={p:"test",t:v.t,g:v.g,id,i:1,s:0,ck:[]};render()}
 function tg(j){const a=v.ck[v.s]||(v.ck[v.s]=[]);a[j]=!a[j];v.msg="";render()}
 function fin(r){const s=F(v.id);rec(s,key(v.t,s),r);v={p:"res",t:v.t,g:v.g,id:v.id};render()}
-function pass(){const s=F(v.id),N=LV[key(v.t,s)];s.pd=s.pd||{};const pk=key(v.t,s)+"_"+v.i,gn=!s.pd[pk];if(gn){s.pd[pk]=1;s.pts=(s.pts||0)+1}save();const sx=gn?" +१ ⭐":"";if(v.i<N-1){v.i++;v.ck=[];v.s=0;v.msg="🎉 पास!"+sx;render()}else{fin(N);v.msg="🏆 सर्व स्तर पूर्ण!"+sx;render()}}
+function pass(){if(!(v.ck||[]).some(a=>a&&a.some(Boolean)))return;const s=F(v.id),N=LV[key(v.t,s)];s.pd=s.pd||{};const pk=key(v.t,s)+"_"+v.i,gn=!s.pd[pk];if(gn){s.pd[pk]=1;s.pts=(s.pts||0)+1}save();const sx=gn?" +१ ⭐":"";if(v.i<N-1){v.i++;v.ck=[];v.s=0;v.msg="🎉 पास!"+sx;render()}else{fin(N);v.msg="🏆 सर्व स्तर पूर्ण!"+sx;render()}}
 function back(){v.i--;v.ck=[];v.s=0;v.msg="";render()}
 function fl(){if(confirm("या स्तरावर नापास करायचे? निकाल स्तर "+v.i+" नोंदवला जाईल."))fin(v.i)}
 function setl(id,k,l){const s=F(id);if(l==="")delete s.res[k];else rec(s,k,+l);save();render()}
 function cp(id){const e=$(id);e.select();try{document.execCommand("copy")}catch(x){}}
 function imp(){try{const o=JSON.parse($("im").value);if(!o||!Array.isArray(o.st))throw 0;if(confirm("सध्याचा सर्व डेटा बदलला जाईल. पुढे जायचे?")){S=o;mig();save();go("home")}}catch(e){alert("बॅकअप वैध नाही")}}
-const nav=()=>`<nav class="np"><div class="row">${[["home","🏠 मुख्य"],["rep","📊 अहवाल"],["bk","💾 बॅकअप"],["about","ℹ️ About"],["priv","🔒 प्रायव्हसी पॉलिसी"],["rate","⭐ रेटिंग"]].map(a=>`<button class="${v.p==a[0]?"on":""}" onclick="go('${a[0]}')">${a[1]}</button>`).join("")}</div>${v.p=="home"?`<div class="row tabs">${M.map(m=>`<button class="${v.t==m[0]?"on":""}" onclick="v.t='${m[0]}';render()">${m[1]} ${m[2]}</button>`).join("")}</div>`:""}</nav>`;
+const nav=()=>`<nav class="np"><div class="row">${[["home","🏠 मुख्य"],["rep","📊 अहवाल"],["more","☰ अधिक"]].map(a=>`<button class="${v.p==a[0]?"on":""}" onclick="go('${a[0]}')">${a[1]}</button>`).join("")}</div>${v.p=="home"?`<div class="row tabs">${M.map(m=>`<button class="${v.t==m[0]?"on":""}" onclick="v.t='${m[0]}';render()">${m[1]} ${m[2]}</button>`).join("")}</div>`:""}</nav>`;
 function home(){const m=M.find(x=>x[0]==v.t);
 const rows=S.st.map(s=>{const k=m[0]+s.g,N=LV[k],r=s.res[k];
 return `<div class="row sp st"><div><b>${esc(s.n)}</b> <span class="badge">${G[s.g]}</span> <span class="m">⭐${s.pts||0}</span><br><span class="m">${r?"स्तर "+r+" / "+N+(s.dt[k]?" · "+s.dt[k]:""):"अजून तपासणी नाही"}</span></div><div class="row">${D[k]?`<button class="btn" onclick="start(${s.id})">परीक्षा</button>`:`<select onchange="setl(${s.id},'${k}',this.value)"><option value="">स्तर निवडा</option>${Array.from({length:N},(_,i)=>`<option value="${i+1}"${r==i+1?" selected":""}>${i+1}</option>`).join("")}</select>`}<button class="btn g" onclick="del(${s.id})">✕</button></div></div>`}).join("");
 const note=S.st.some(s=>!D[m[0]+s.g])?`<p class="m">ज्या वर्गाचे प्रश्न अजून जोडले नाहीत तिथे परिशिष्ट ४ नुसार स्तर थेट निवडा.</p>`:"";
 return `<div class="card"><h2>विद्यार्थी जोडा</h2><div class="row"><input id="nm" placeholder="विद्यार्थ्याचे नाव"><select id="gr" style="width:120px"><option value="35"${v.g!="2"?" selected":""}>${G["35"]}</option><option value="2"${v.g=="2"?" selected":""}>${G["2"]}</option></select><button class="btn" onclick="add()">+</button></div></div>
 <div class="card"><h2>${m[1]} ${m[2]} (${S.st.length})</h2>${note}${rows||'<p class="m">वर विद्यार्थी जोडा.</p>'}</div>`}
-function test(){const s=F(v.id),k=key(v.t,s),N=LV[k],d=D[k],i=v.i,ss=sets(k,i),q=ss[v.s],dn=z=>ss[z].every((_,j)=>v.ck[z]&&v.ck[z][j]),all=ss.some((_,z)=>dn(z)),cs=v.ck[v.s]||[];
-return `<div class="card"><div class="row sp"><b>${esc(s.n)}</b><span class="badge">स्तर ${i+1} / ${N}</span></div><div class="bar"><b style="width:${(i+1)/N*100}%"></b></div>${v.msg?`<p style="color:var(--ok);font-weight:700;margin:0">${v.msg}</p>`:""}<h2>${d.t[i]}</h2><p class="m">प्रत्येक योग्य उत्तरावर टॅप करा. कोणताही एक संच पूर्ण बरोबर असेल तर पास.</p>${ss.length>1?`<div class="sets">${ss.map((_,z)=>`<button class="${z==v.s?"on ":""}${dn(z)?"dn":""}" onclick="v.s=${z};render()">${z+1}</button>`).join("")}</div>`:""}${q.map((t,j)=>`<div class="q${cs[j]?" on":""}${v.big?" bg":""}" onclick="tg(${j})"><i>${cs[j]?"✓":""}</i>${t}</div>`).join("")}
+function test(){const s=F(v.id),k=key(v.t,s),N=LV[k],d=D[k],i=v.i,ss=sets(k,i),q=ss[v.s],dn=z=>!!(v.ck[z]&&v.ck[z].some(Boolean)),all=ss.some((_,z)=>dn(z)),cs=v.ck[v.s]||[];
+return `<div class="card"><div class="row sp"><b>${esc(s.n)}</b><span class="badge">स्तर ${i+1} / ${N}</span></div><div class="bar"><b style="width:${(i+1)/N*100}%"></b></div>${v.msg?`<p style="color:var(--ok);font-weight:700;margin:0">${v.msg}</p>`:""}<h2>${d.t[i]}</h2><p class="m">प्रत्येक योग्य उत्तरावर टॅप करा. कोणत्याही एक संच मधील एक उत्तर बरोबर असेल तर पास.</p>${ss.length>1?`<div class="sets">${ss.map((_,z)=>`<button class="${z==v.s?"on ":""}${dn(z)?"dn":""}" onclick="v.s=${z};render()">${z+1}</button>`).join("")}</div>`:""}${q.map((t,j)=>`<div class="q${cs[j]?" on":""}${v.big?" bg":""}" onclick="tg(${j})"><i>${cs[j]?"✓":""}</i>${t}</div>`).join("")}
 <div class="row" style="margin-top:12px"><button class="btn no" style="flex:1" onclick="fl()">नापास – थांबा</button><button class="btn ok" style="flex:1" ${all?"":"disabled"} onclick="pass()">${i==N-1?"पास → पूर्ण":"पास → पुढे"}</button></div></div>
 <div class="row"><button class="btn g" onclick="go('home')">← मुख्य</button>${i>1?`<button class="btn g" onclick="back()">‹ मागील स्तर</button>`:""}<button class="btn g" onclick="v.big=!v.big;render()">👁 मोठे अक्षर</button></div>`}
 function res(){const s=F(v.id),k=key(v.t,s),N=LV[k],r=s.res[k],d=D[k];
@@ -217,6 +218,11 @@ function rate(){const r=S.rate||0;return `<div class="card pv" style="text-align
 <p class="m">${r?"तुमचे रेटिंग: "+dv(r)+" / ५":"तारे निवडा"}</p>
 <div class="row" style="flex-direction:column;align-items:stretch;gap:8px"><button class="btn" onclick="location.href='${PLAY}'">Play Store वर रेटिंग द्या</button>
 <button class="btn g" onclick="location.href='mailto:${MAIL}?subject='+encodeURIComponent('${APP} अभिप्राय')+'&body='+encodeURIComponent('रेटिंग: '+(S.rate||'-')+'/5%0A')">✉️ अभिप्राय पाठवा</button></div></div>`}
-function render(){$("nv").innerHTML=v.p=="test"?"":nav();$("app").innerHTML=({home,test,res,rep,bk,about,priv,rate})[v.p]()+(v.p=="test"?"":adb());scrollTo(0,0);adSync()}
+
+const MI=[["bk","💾","बॅकअप व Excel","डेटा कॉपी करा किंवा परत आणा"],["about","ℹ️","ॲपबद्दल (About)","आवृत्ती, माहिती व सूचना"],["priv","🔒","प्रायव्हसी पॉलिसी","तुमचा डेटा कसा हाताळला जातो"],["rate","⭐","ॲपला रेटिंग द्या","अभिप्राय व Play Store"]];
+function mo(m){v.m=m;render()}
+function more(){const m=v.m;if(m&&MI.some(a=>a[0]==m)){const a=MI.find(x=>x[0]==m);return `<div class="row np" style="margin-bottom:10px;align-items:center"><button class="btn g" onclick="mo()">‹ अधिक</button><b>${a[1]} ${a[2]}</b></div>`+({bk,about,priv,rate})[m]()}
+return `<div class="card ml">${MI.map(a=>`<button class="mi" onclick="mo('${a[0]}')"><span class="ic">${a[1]}</span><span class="tx"><b>${a[2]}</b><small>${a[3]}</small></span><span class="ch">›</span></button>`).join("")}</div><p class="m" style="text-align:center;font-size:12px">${APP} · आवृत्ती ${VER}</p>`}
+function render(){$("nv").innerHTML=v.p=="test"?"":nav();$("app").innerHTML=({home,test,res,rep,more})[v.p]()+(v.p=="test"?"":adb());scrollTo(0,0);adSync()}
 render();adInit();
 </script></body></html>
